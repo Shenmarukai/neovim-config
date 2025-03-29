@@ -1,6 +1,6 @@
-require("theprimeagen.set")
-require("theprimeagen.remap")
-require("theprimeagen.lazy_init")
+require("shenmarukai.set")
+require("shenmarukai.remap")
+require("shenmarukai.lazy_init")
 
 -- DO.not
 -- DO NOT INCLUDE THIS
