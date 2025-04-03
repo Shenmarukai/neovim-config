@@ -19,6 +19,7 @@ return {
             formatters_by_ft = {
             }
         })
+        vim.lsp.inlay_hint.enable()
         local cmp = require('cmp')
         local cmp_lsp = require("cmp_nvim_lsp")
         local capabilities = vim.tbl_deep_extend(
