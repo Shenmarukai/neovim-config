@@ -19,6 +19,8 @@ return {
             formatters_by_ft = {
             }
         })
+        vim.diagnostic.show()
+        vim.diagnostic.config({ virtual_text = true })
         vim.lsp.inlay_hint.enable()
         local cmp = require('cmp')
         local cmp_lsp = require("cmp_nvim_lsp")
