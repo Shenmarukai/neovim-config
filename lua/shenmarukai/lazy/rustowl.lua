@@ -1,7 +1,6 @@
 return {
     'cordx56/rustowl',
     dependencies = { "neovim/nvim-lspconfig" },
-    build = 'cd rustowl && cargo install --path . --locked',
     lazy = false, -- This plugin is already lazy
     opts = {
         auto_attach = true, -- Auto attach the RustOwl LSP client when opening a Rust file
@@ -15,4 +14,8 @@ return {
             end
         }, -- LSP client configuration that gets passed to `vim.lsp.start`
     },
+    config = function()
+        local lspconfig = require("lspconfig")
+        lspconfig.rustowlsp.setup({})
+    end,
 }

@@ -13,5 +13,8 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     spec = "shenmarukai.lazy",
-    change_detection = { notify = false }
+    change_detection = { notify = false },
+    git = {
+        timeout = 600, -- increased from default 120 in order to allow larger build times for plugins like rustowl
+    }
 })
