@@ -1,4 +1,5 @@
--- hi
+-- Twilight
+
 return {
   "folke/twilight.nvim",
   opts = {
@@ -19,5 +20,5 @@ return {
       "_statement"
     },
     exclude = {}, -- exclude these filetypes
-  }
+  },
 }

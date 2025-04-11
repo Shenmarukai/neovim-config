@@ -17,8 +17,4 @@ return {
             end
         }, -- LSP client configuration that gets passed to `vim.lsp.start`
     },
-    config = function()
-        local lspconfig = require("lspconfig")
-        lspconfig.rustowlsp.setup({})
-    end,
 }
