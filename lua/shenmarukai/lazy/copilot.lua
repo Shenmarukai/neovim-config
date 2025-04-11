@@ -1,3 +1,5 @@
+-- Copilot
+
 return {
     {
         "zbirenbaum/copilot.lua",

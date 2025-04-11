@@ -1,3 +1,5 @@
+-- Peek
+
 return {
     {
         "toppair/peek.nvim",

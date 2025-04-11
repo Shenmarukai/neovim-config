@@ -1,3 +1,5 @@
+-- Vim Be Good
+
 return {
     "theprimeagen/vim-be-good",
 

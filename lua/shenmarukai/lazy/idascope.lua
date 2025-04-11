@@ -1,4 +1,4 @@
--- idascope.lua
+-- Idascope
 
 return {
   "dead-null/idascope", url = "https://github.com/dead-null/idascope",

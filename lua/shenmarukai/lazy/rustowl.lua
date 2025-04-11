@@ -1,3 +1,5 @@
+-- Rust Owl
+
 return {
     'cordx56/rustowl',
     version = '*', -- Latest stable version
