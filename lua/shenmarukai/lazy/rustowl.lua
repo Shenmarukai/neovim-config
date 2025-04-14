@@ -7,9 +7,7 @@ return {
     lazy = false, -- This plugin is already lazy
 
     config = function()
-        require('rustowl').setup({})
-
-        local opts = {
+        require('rustowl').setup({
             auto_attach = true, -- Auto attach the RustOwl LSP client when opening a Rust file
             auto_enable = true, -- Enable RustOwl immediately when attaching the LSP client
             idle_time = 500, -- Time in milliseconds to hover with the cursor before triggering RustOwl
@@ -20,8 +18,6 @@ return {
                     end, { buffer = buffer, desc = 'Toggle RustOwl' })
                 end
             }, -- LSP client configuration that gets passed to `vim.lsp.start`
-        }
-
-        require('rustowl.opts').setup(opts)
+        })
     end
 }

@@ -4,9 +4,7 @@ return {
     "folke/twilight.nvim",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     config = function()
-        require('twilight').setup({})
-
-        local opts = {
+        require('twilight').setup({
             dimming = {
                 alpha = 0.25, -- amount of dimming
                 -- we try to get the foreground from the highlight groups or fallback color
@@ -21,11 +19,10 @@ return {
             expand = { -- for treesitter, we we always try to expand to the top-most ancestor with these types
                 "_declaration",
                 "_definition",
-                "_statement"
+                "_statement",
+                "_constructor"
             },
             exclude = {}, -- exclude these filetypes
-        }
-
-        require('twilight').setup(opts)
+        })
     end
 }
