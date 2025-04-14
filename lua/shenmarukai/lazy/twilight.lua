@@ -3,6 +3,7 @@
 return {
     "folke/twilight.nvim",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
+    after = "nvim-treesitter", -- Ensure Twilight loads after Treesitter
     config = function()
         require('twilight').setup({
             dimming = {
@@ -24,5 +25,8 @@ return {
             },
             exclude = {}, -- exclude these filetypes
         })
+        vim.keymap.set('n', '<leader>T', function()
+            require('twilight').toggle()
+        end, { desc = 'Toggle Twilight' })
     end
 }
