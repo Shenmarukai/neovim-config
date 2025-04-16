@@ -4,6 +4,7 @@ return {
     'cordx56/rustowl',
     version = '*', -- Latest stable version
     dependencies = { "neovim/nvim-lspconfig" },
+    after = "nvim-treesitter", -- Ensure Twilight loads after Treesitter
     lazy = false, -- This plugin is already lazy
 
     config = function()

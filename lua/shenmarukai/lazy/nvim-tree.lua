@@ -11,9 +11,6 @@ return {
         -- optionally enable 24-bit colour
         vim.opt.termguicolors = true
 
-        -- empty setup using defaults
-        require("nvim-tree").setup()
-
         -- OR setup with some options
         require("nvim-tree").setup({
             sort = {
@@ -29,5 +26,8 @@ return {
                 dotfiles = true,
             },
         })
+
+        -- Add a toggle hotkey using vim.keymap.set
+        vim.keymap.set('n', '<leader><C>T', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
     end
 }

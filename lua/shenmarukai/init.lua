@@ -49,14 +49,11 @@ autocmd({"BufWritePre"}, {
 autocmd('BufEnter', {
     group = ThePrimeagenGroup,
     callback = function()
-        if vim.bo.filetype == "zig" then
-            vim.cmd.colorscheme("tokyonight-night")
-        else
-            vim.cmd.colorscheme("rose-pine-moon")
-        end
+        --vim.cmd.colorscheme("tokyonight-night")
+        --vim.cmd.colorscheme("github_dark_default")
+        vim.cmd.colorscheme("catppuccin")
     end
 })
-
 
 autocmd('LspAttach', {
     group = ThePrimeagenGroup,
@@ -72,9 +69,17 @@ autocmd('LspAttach', {
         vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
         vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
         vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
+        vim.diagnostic.config({ virtual_text = true })
+        vim.diagnostic.show()
+        vim.lsp.inlay_hint.enable()
+        require('twilight').enable()
     end
 })
 
 vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
+
+
+
+

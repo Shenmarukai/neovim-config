@@ -15,15 +15,37 @@ return {
         "saadparwaiz1/cmp_luasnip",
         "j-hui/fidget.nvim",
     },
-
+    opts = {
+        diagnostics = {
+            underline = true,
+            update_in_insert = false,
+            virtual_text = {
+                spacing = 3,
+                source = "if_many",
+                prefix = "●",
+                -- this will set set the prefix to a function that returns the diagnostics icon based on the severity
+                -- this only works on a recent -1.10.0 build. Will be set to "●" when not supported
+                -- prefix = "icons",
+            },
+            severity_sort = true,
+            signs = {
+                text = {
+                    [vim.diagnostic.severity.ERROR] = "",
+                    [vim.diagnostic.severity.WARN] = "",
+                    [vim.diagnostic.severity.HINT] = "",
+                    [vim.diagnostic.severity.INFO] = "",
+                },
+            },
+        },
+        inlay_hints = {
+            enabled = true,
+            exclude = {}, -- filetypes for which you don't want to enable inlay hints
+        },
+    },
     config = function()
         require("conform").setup({
-            formatters_by_ft = {
-            }
+            formatters_by_ft = {}
         })
-        vim.diagnostic.show()
-        vim.diagnostic.config({ virtual_text = true })
-        vim.lsp.inlay_hint.enable()
         local cmp = require('cmp')
         local cmp_lsp = require("cmp_nvim_lsp")
         local capabilities = vim.tbl_deep_extend(
@@ -31,7 +53,6 @@ return {
             {},
             vim.lsp.protocol.make_client_capabilities(),
             cmp_lsp.default_capabilities())
-
         require("fidget").setup({})
         require("mason").setup()
         require("mason-lspconfig").setup({
@@ -46,38 +67,81 @@ return {
                         capabilities = capabilities
                     }
                 end,
-
-                zls = function()
-                    local lspconfig = require("lspconfig")
-                    lspconfig.zls.setup({
-                        root_dir = lspconfig.util.root_pattern(".git", "build.zig", "zls.json"),
-                        settings = {
-                            zls = {
-                                enable_inlay_hints = true,
-                                enable_snippets = true,
-                                warn_style = true,
-                            },
-                        },
-                    })
-                    vim.g.zig_fmt_parse_errors = 0
-                    vim.g.zig_fmt_autosave = 0
-
-                end,
+                --[[
                 ["lua_ls"] = function()
-                    local lspconfig = require("lspconfig")
-                    lspconfig.lua_ls.setup {
+                    vim.lsp.config('lua_ls', {
                         capabilities = capabilities,
                         settings = {
                             Lua = {
                                 runtime = { version = "Lua 5.1" },
                                 diagnostics = {
                                     globals = { "bit", "vim", "it", "describe", "before_each", "after_each" },
-                                }
+                                },
+                                workspace = {
+                                    checkThirdParty = false,
+                                },
+                                codeLens = {
+                                    enable = true,
+                                },
+                                completion = {
+                                    callSnippet = "Replace",
+                                },
+                                doc = {
+                                    privateName = { "^_" },
+                                },
+                                hint = {
+                                    enable = true,
+                                    paramType = true,
+                                },
                             }
                         }
-                    }
+                    })
                 end,
-            }
+                ["rust_analyzer"] = function()
+                    vim.lsp.config('rust_analyzer', {
+                        capabilities = capabilities,
+                        settings = {
+                            ["rust-analyzer"] = {
+                                checkOnSave = {
+                                    command = "clippy",
+                                },
+                                cargo = {
+                                    allFeatures = true,
+                                },
+                            }
+                        }
+                    })
+                end,
+                ["ts_ls"] = function()
+                    vim.lsp.config('ts_ls', {
+                        capabilities = capabilities,
+                        init_options = {
+                            plugins = {
+                                {
+                                    name = "@vue/typescript-plugin",
+                                    location = "/usr/local/lib/node_modules/@vue/typescript-plugin",
+                                    languages = {"javascript", "typescript", "vue"},
+                                },
+                            },
+                        },
+                        filetypes = {
+                            "javascript",
+                            "javascriptreact",
+                            "javascript.jsx",
+                            "typescript",
+                            "typescriptreact",
+                            "typescript.tsx"
+                        },
+                        root_markers = {
+                            "tsconfig.json",
+                            "jsconfig.json",
+                            "package.json",
+                            ".git"
+                        },
+                    })
+                end,
+                ]]
+            },
         })
 
         local cmp_select = { behavior = cmp.SelectBehavior.Select }
@@ -101,18 +165,6 @@ return {
             }, {
                 { name = 'buffer' },
             })
-        })
-
-        vim.diagnostic.config({
-            -- update_in_insert = true,
-            float = {
-                focusable = false,
-                style = "minimal",
-                border = "rounded",
-                source = "always",
-                header = "",
-                prefix = "",
-            },
         })
     end
 }

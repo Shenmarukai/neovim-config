@@ -1,59 +1,11 @@
 -- Colors
 
-function ColorMyPencils(color)
-	color = color or "rose-pine-moon"
-	vim.cmd.colorscheme(color)
-
-	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-end
-
 return {
-
-    {
-        "erikbackman/brightburn.vim",
-    },
-
     {
         "folke/tokyonight.nvim",
+        name = 'tokyonight',
         lazy = false,
         opts = {},
-        config = function()
-            ColorMyPencils()
-        end
-    },
-    {
-        "ellisonleao/gruvbox.nvim",
-        name = "gruvbox",
-        config = function()
-            require("gruvbox").setup({
-                terminal_colors = true, -- add neovim terminal colors
-                undercurl = true,
-                underline = false,
-                bold = true,
-                italic = {
-                    strings = false,
-                    emphasis = false,
-                    comments = false,
-                    operators = false,
-                    folds = false,
-                },
-                strikethrough = true,
-                invert_selection = false,
-                invert_signs = false,
-                invert_tabline = false,
-                invert_intend_guides = false,
-                inverse = true, -- invert background for search, diffs, statuslines and errors
-                contrast = "", -- can be "hard", "soft" or empty string
-                palette_overrides = {},
-                overrides = {},
-                dim_inactive = false,
-                transparent_mode = false,
-            })
-        end,
-    },
-    {
-        "folke/tokyonight.nvim",
         config = function()
             require("tokyonight").setup({
                 -- your configuration comes here
@@ -73,21 +25,27 @@ return {
             })
         end
     },
-
     {
-        "rose-pine/neovim",
-        name = "rose-pine",
+        'projekt0n/github-nvim-theme',
+        name = 'github-theme',
+        lazy = false, -- make sure we load this during startup if it is your main colorscheme
+        priority = 1000, -- make sure to load this before all the other start plugins
         config = function()
-            require('rose-pine').setup({
-                disable_background = true,
-                styles = {
-                    italic = false,
+            require('github-theme').setup({
+                options = {
+                    transparent = true,
                 },
             })
-
-            ColorMyPencils();
-        end
+        end,
     },
-
-
+    {
+        "catppuccin/nvim",
+        name = "catppuccin",
+        config = function()
+            require("catppuccin").setup({
+                flavour = "mocha", -- latte, frappe, macchiato, mocha
+                transparent_background = false,
+            })
+        end
+    }
 }
