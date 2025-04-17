@@ -52,6 +52,13 @@ autocmd('BufEnter', {
         --vim.cmd.colorscheme("tokyonight-night")
         --vim.cmd.colorscheme("github_dark_default")
         vim.cmd.colorscheme("catppuccin")
+        local ft = vim.bo.filetype
+        if ft == "html" or ft == "css" or ft == "javascript" or ft == "typescript" or
+           ft == "javascriptreact" or ft == "typescriptreact" then
+            vim.opt_local.tabstop = 2
+            vim.opt_local.shiftwidth = 2
+            vim.opt_local.expandtab = true
+        end
     end
 })
 
