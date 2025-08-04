@@ -6,6 +6,6 @@ return {
         "nvim-treesitter/nvim-treesitter"
     },
     config = function()
-        require("php").setup({})
+        require( "php" ).setup( {} )
     end
 }

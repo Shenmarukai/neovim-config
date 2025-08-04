@@ -1,12 +1,12 @@
 return {
     "HiPhish/rainbow-delimiters.nvim",
     config = function()
-        require('rainbow-delimiters.setup').setup {
+        require( 'rainbow-delimiters.setup' ).setup {
             strategy = {
-                [''] = 'rainbow-delimiters.strategy.global',
+                [ '' ] = 'rainbow-delimiters.strategy.global',
             },
             query = {
-                [''] = 'rainbow-delimiters',
+                [ '' ] = 'rainbow-delimiters',
             },
             highlight = {
                 'RainbowDelimiterRed',

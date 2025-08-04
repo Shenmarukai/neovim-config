@@ -7,7 +7,7 @@ return {
         lazy = false,
         opts = {},
         config = function()
-            require("tokyonight").setup({
+            require( "tokyonight" ).setup({
                 -- your configuration comes here
                 -- or leave it empty to use the default settings
                 style = "storm", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
@@ -31,7 +31,7 @@ return {
         lazy = false, -- make sure we load this during startup if it is your main colorscheme
         priority = 1000, -- make sure to load this before all the other start plugins
         config = function()
-            require('github-theme').setup({
+            require( 'github-theme' ).setup({
                 options = {
                     transparent = true,
                 },
@@ -42,7 +42,7 @@ return {
         "catppuccin/nvim",
         name = "catppuccin",
         config = function()
-            require("catppuccin").setup({
+            require( "catppuccin" ).setup({
                 flavour = "mocha", -- latte, frappe, macchiato, mocha
                 transparent_background = false,
             })

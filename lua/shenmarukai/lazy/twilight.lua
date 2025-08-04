@@ -3,9 +3,8 @@
 return {
     "folke/twilight.nvim",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
-    after = "nvim-treesitter", -- Ensure Twilight loads after Treesitter
     config = function()
-        require('twilight').setup({
+        require( 'twilight' ).setup({
             dimming = {
                 alpha = 0.25, -- amount of dimming
                 -- we try to get the foreground from the highlight groups or fallback color
@@ -25,8 +24,14 @@ return {
             },
             exclude = {}, -- exclude these filetypes
         })
-        vim.keymap.set('n', '<leader>T', function()
-            require('twilight').toggle()
-        end, { desc = 'Toggle Twilight' })
+        vim.keymap.set( 'n', '<leader>T', function()
+            require( 'twilight' ).toggle()
+        end, { desc = 'Toggle Twilight' } )
+        vim.keymap.set( 'n', '<leader>E', function()
+            require( 'twilight' ).enable()
+        end, { desc = 'Enable Twilight' } )
+        vim.keymap.set( 'n', '<leader>D', function()
+            require( 'twilight' ).disable()
+        end, { desc = 'Disable Twilight' } )
     end
 }

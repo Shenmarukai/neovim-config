@@ -12,7 +12,7 @@ return {
         vim.opt.termguicolors = true
 
         -- OR setup with some options
-        require("nvim-tree").setup({
+        require( "nvim-tree" ).setup({
             sort = {
                 sorter = "case_sensitive",
             },
@@ -28,6 +28,6 @@ return {
         })
 
         -- Add a toggle hotkey using vim.keymap.set
-        vim.keymap.set('n', '<leader><C>T', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
+        vim.keymap.set( 'n', '<leader><C>T', ':NvimTreeToggle<CR>', { noremap = true, silent = true } )
     end
 }

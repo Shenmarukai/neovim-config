@@ -8,7 +8,7 @@ return {
         {
             "<leader>vv",
             function()
-                require("telescope_ida").IDAScope()
+                require( "telescope_ida" ).IDAScope()
             end,
             desc = "Open IDAScope with Telescope",
         },
@@ -20,8 +20,8 @@ return {
     },
 
     config = function()
-        local ida_plugin = require("telescope_ida")
-        local telescope = require("telescope")
+        local ida_plugin = require( "telescope_ida" )
+        local telescope = require( "telescope" )
 
         telescope.setup({
             defaults = {
@@ -39,9 +39,9 @@ return {
             check_if_installed = false, -- Check if the Python plugin is already installed
         })
 
-        vim.api.nvim_create_user_command("IDAScope", function(args)
-            local xml_url = (args.args ~= "") and args.args or ida_plugin.ida_xml_server
-            ida_plugin.IDAScope(xml_url)
+        vim.api.nvim_create_user_command( "IDAScope", function( args )
+            local xml_url = ( args.args ~= "" ) and args.args or ida_plugin.ida_xml_server
+            ida_plugin.IDAScope( xml_url )
         end, {
         nargs = "?",
         desc = "IDAScope",
