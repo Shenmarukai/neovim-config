@@ -44,7 +44,23 @@ return {
     },
     config = function()
         require( "conform" ).setup({
-            formatters_by_ft = {}
+            formatters_by_ft = {
+                c = { "clang-format" },
+                cpp = { "clang-format" },
+                h = { "clang-format" },
+                hpp = { "clang-format" },
+            },
+            linters_by_ft = {
+                c = { "cpplint" },
+                cpp = { "cpplint" },
+                h = { "cpplint" },
+                hpp = { "cpplint" },
+            },
+            linters = {
+                cpplint = {
+                    command = "cpplint",
+                },
+            },
         })
         local cmp = require( 'cmp' )
         local cmp_lsp = require( "cmp_nvim_lsp" )
@@ -54,10 +70,6 @@ return {
             vim.lsp.protocol.make_client_capabilities(),
             cmp_lsp.default_capabilities() )
         require( "fidget" ).setup( {} )
-
-        vim.lsp.config( 'biome', {
-
-        })
 
         vim.lsp.config( 'ts_ls', {
             init_options = {
