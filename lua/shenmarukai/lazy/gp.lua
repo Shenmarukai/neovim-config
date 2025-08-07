@@ -1,7 +1,7 @@
 -- GP
 
 return {
-    "robitx/gp.nvim",
+    "Shenmarukai/gp.nvim",
     config = function()
         require( "gp" ).setup({
 	        providers = {
@@ -40,6 +40,16 @@ return {
 		        	command = true,
 		        	-- string with model name or table with model name and parameters
 		        	model = { model = "gpt-4.1", temperature = 0.0, top_p = 0 },
+		        	-- system prompt (use this to specify the persona/role of the AI)
+		        	system_prompt = require("gp.defaults").code_system_prompt,
+		        },
+		        {
+		        	provider = "openai",
+		        	name = "CodeGPT5",
+		        	chat = false,
+		        	command = true,
+		        	-- string with model name or table with model name and parameters
+		        	model = { model = "gpt-5" },
 		        	-- system prompt (use this to specify the persona/role of the AI)
 		        	system_prompt = require("gp.defaults").code_system_prompt,
 		        },
