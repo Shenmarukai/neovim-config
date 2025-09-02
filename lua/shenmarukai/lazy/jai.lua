@@ -1,6 +1,5 @@
 -- Jai
 
 return {
-    "rluba/jai.vim",
+	"rluba/jai.vim",
 }
-
