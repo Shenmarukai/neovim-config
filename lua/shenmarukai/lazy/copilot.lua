@@ -6,6 +6,7 @@ return {
 	event = "InsertEnter",
 	config = function()
 		require( "copilot" ).setup({
+			copilot_model = "gpt-4.1-copilot",
 			suggestion = {
 				enabled = true,
 				auto_trigger = false,
@@ -20,6 +21,7 @@ return {
 					dismiss = false,
 				},
 			},
+			telemetryLevel = "none"
 		})
 	end,
 }
