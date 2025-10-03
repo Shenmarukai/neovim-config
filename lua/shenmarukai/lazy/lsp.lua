@@ -92,6 +92,7 @@ return {
 				"gopls",
 				"ts_ls",
 				"biome",
+				"csharp_ls"
 			},
 			handlers = {
 				function( server_name ) -- default handler (optional)

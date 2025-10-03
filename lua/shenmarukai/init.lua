@@ -1,6 +1,6 @@
-require("shenmarukai.set")
-require("shenmarukai.remap")
-require("shenmarukai.lazy_init")
+require( "shenmarukai.set" )
+require( "shenmarukai.remap" )
+require( "shenmarukai.lazy_init" )
 
 -- DO.not
 -- DO NOT INCLUDE THIS
@@ -24,28 +24,26 @@ function R( name )
 end
 
 function SmallTabLanguage( filetype )
-	if filetype == "html" or
-	   filetype == "css" or
-	   filetype == "javascript" or
-	   filetype == "typescript" or
+	if filetype == "html"            or
+	   filetype == "css"             or
+	   filetype == "javascript"      or
+	   filetype == "typescript"      or
 	   filetype == "javascriptreact" or
 	   filetype == "typescriptreact" or
-	   filetype == "json" or
-	   filetype == "xml"
-	then
+	   filetype == "json"            or
+	   filetype == "xml"             then
 		return true
 	end
 end
 
 function MediumTabLanguage( filetype )
-	if filetype == "lua" or
-	   filetype == "python" or
-	   filetype == "c" or
-	   filetype == "c++" or
-	   filetype == "c#" or
-	   filetype == "rust" or
-	   filetype == "markdown"
-	then
+	if filetype == "lua"      or
+	   filetype == "python"   or
+	   filetype == "c"        or
+	   filetype == "c++"      or
+	   filetype == "c#"       or
+	   filetype == "rust"     or
+	   filetype == "markdown" then
 		return true
 	end
 end
@@ -54,11 +52,16 @@ function LargeTabLanguage( _filetype )
 	return false
 end
 
-
 vim.filetype.add({
 	extension = {
 		templ = 'templ',
 	}
+})
+
+autocmd( "VimEnter", {
+	callback = function()
+		require( "nvim-tree.api" ).tree.open()
+	end,
 })
 
 autocmd( 'TextYankPost', {
@@ -81,36 +84,46 @@ autocmd( { "BufWritePre" }, {
 autocmd( 'BufEnter', {
 	group = ThePrimeagenGroup,
 	callback = function()
-		--vim.cmd.colorscheme("tokyonight-night")
-		--vim.cmd.colorscheme("github_dark_default")
+		--vim.cmd.colorscheme( "tokyonight-night" )
+		--vim.cmd.colorscheme( "github_dark_default" )
 		vim.cmd.colorscheme( "catppuccin" )
 		--local twilight = require( 'twilight' )
 		--twilight.disable()
 		--twilight.enable()
 		local filetype = vim.bo.filetype
-        vim.opt_local.expandtab = false
-		if SmallTabLanguage( filetype ) then
-			vim.opt_local.tabstop = 2
-			vim.opt_local.shiftwidth = 2
-		elseif MediumTabLanguage( filetype ) then
-			vim.opt_local.tabstop = 4
-			vim.opt_local.shiftwidth = 4
-		elseif LargeTabLanguage( filetype ) then
-			vim.opt_local.tabstop = 8
-			vim.opt_local.shiftwidth = 8
-		else
-			vim.opt_local.tabstop = 4
-			vim.opt_local.shiftwidth = 4
-		end
+		vim.opt_local.expandtab = false
+		vim.opt_local.tabstop = 4
+		vim.opt_local.shiftwidth = 4
 	end
 })
 
 autocmd( 'LspAttach', {
 	group = ThePrimeagenGroup,
 	callback = function( e )
+		local filetype = vim.bo.filetype
 		vim.diagnostic.config( { virtual_text = true } )
 		vim.diagnostic.show()
 		vim.lsp.inlay_hint.enable()
+		if filetype ~= 'NvimTree' then
+			vim.opt.list = true
+			vim.opt.listchars = {
+				tab            = '│ ',
+				leadmultispace = '│   ',
+				trail          = '·',
+				extends        = '»',
+				precedes       = '«',
+				conceal        = '*',
+			}
+		else
+			vim.opt.list = true
+			vim.opt.listchars = {
+				tab            = '│ ',
+				leadmultispace = '│ ',
+				extends        = '»',
+				precedes       = '«',
+				conceal        = '*',
+			}
+		end
 		local opts = { buffer = e.buf }
 		vim.keymap.set( "n", "gd", function() vim.lsp.buf.definition() end, opts )
 		vim.keymap.set( "n", "K", function() vim.lsp.buf.hover() end, opts )
@@ -122,6 +135,59 @@ autocmd( 'LspAttach', {
 		vim.keymap.set( "i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts )
 		vim.keymap.set( "n", "[d", function() vim.diagnostic.goto_next() end, opts )
 		vim.keymap.set( "n", "]d", function() vim.diagnostic.goto_prev() end, opts )
+	end
+})
+
+autocmd( { 'ModeChanged', 'BufEnter' }, {
+	group = ThePrimeagenGroup,
+	callback = function ()
+		local mode = vim.fn.mode( 1 )
+		local filetype = vim.bo.filetype
+		if filetype ~= 'NvimTree' then
+			if mode == 'i'    or
+			   mode == 'v'    or
+			   mode == 'V'    or
+			   mode == '\x16' then
+				vim.opt_local.list = true
+				vim.opt_local.listchars = {
+					tab      = '┼─',
+					space    = '·',
+					lead     = '·',
+					leadmultispace = '│···',
+					trail    = '·',
+					eol      = '↲',
+					nbsp     = '␣',
+					extends  = '»',
+					precedes = '«',
+					conceal  = '*',
+				}
+			elseif mode == 'n' then
+				vim.opt_local.list = true
+				vim.opt_local.listchars = {
+					tab      = '│ ',
+					leadmultispace = '│   ',
+					trail    = '·',
+					extends  = '»',
+					precedes = '«',
+					conceal  = '*',
+				}
+			end
+		else
+			if mode == 'i'    or
+			   mode == 'n'     or
+			   mode == 'v'    or
+			   mode == 'V'    or
+			   mode == '\x16' then
+				vim.opt.list = true
+				vim.opt.listchars = {
+					tab            = '│ ',
+					leadmultispace = '│ ',
+					extends        = '»',
+					precedes       = '«',
+					conceal        = '*',
+				}
+			end
+		end
 	end
 })
 
