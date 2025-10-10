@@ -1,5 +1,7 @@
 -- Twilight
 
+-- ./lua/shenmarukai/lazy/twilight.lua
+
 return {
 	"folke/twilight.nvim",
 	dependencies = { "nvim-treesitter/nvim-treesitter" },

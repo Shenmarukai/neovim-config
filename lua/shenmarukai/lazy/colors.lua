@@ -1,5 +1,7 @@
 -- Colors
 
+-- ./lua/shenmarukai/lazy/colors.lua
+
 return {
 	{
 		"folke/tokyonight.nvim",

@@ -1,5 +1,7 @@
 -- Lint
 
+-- ./lua/shenmarukai/lazy/lint.lua
+
 return {
 	{
 		"williamboman/mason.nvim",

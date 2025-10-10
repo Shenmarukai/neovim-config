@@ -1,5 +1,7 @@
 -- Lsp
 
+-- ./lua/shenmarukai/lazy/lsp.lua
+
 return {
 	"neovim/nvim-lspconfig",
 	dependencies = {

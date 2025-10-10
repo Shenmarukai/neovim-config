@@ -1,5 +1,7 @@
 -- Copilot
 
+-- ./lua/shenmarukai/lazy/copilot.lua
+
 return {
 	"zbirenbaum/copilot.lua",
 	cmd = "Copilot",

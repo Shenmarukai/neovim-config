@@ -1,5 +1,7 @@
 -- Idascope
 
+-- ./lua/shenmarukai/lazy/idascope.lua
+
 return {
 	"dead-null/idascope", url = "https://github.com/dead-null/idascope",
 

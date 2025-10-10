@@ -1,5 +1,7 @@
 -- Trouble
 
+-- ./lua/shenmarukai/lazy/trouble.lua
+
 return {
 	"folke/trouble.nvim",
 	config = function()

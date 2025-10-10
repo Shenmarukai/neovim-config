@@ -1,5 +1,7 @@
 -- Plenary
 
+-- ./lua/shenmarukai/lazy/init.lua
+
 return {
 	{
 		"nvim-lua/plenary.nvim",

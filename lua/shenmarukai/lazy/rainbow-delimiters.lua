@@ -1,5 +1,7 @@
 -- Rainbow Delimiters
 
+-- ./lua/shenmarukai/lazy/rainbow-delimiters.lua
+
 return {
 	"HiPhish/rainbow-delimiters.nvim",
 	config = function()

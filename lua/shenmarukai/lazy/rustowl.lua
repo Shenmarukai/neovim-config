@@ -1,5 +1,7 @@
 -- Rust Owl
 
+-- ./lua/shenmarukai/lazy/rustowl.lua
+
 return {
 	--[[ 'cordx56/rustowl',
 	version = '*', -- Latest stable version

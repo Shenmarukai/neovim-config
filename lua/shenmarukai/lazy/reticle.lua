@@ -1,5 +1,7 @@
 -- Reticle
 
+-- ./lua/shenmarukai/lazy/reticle.lua
+
 return {
 	"tummetott/reticle.nvim",
 	event = 'VeryLazy',

@@ -1,3 +1,7 @@
+-- Barbar
+
+-- ./lua/shenmarukai/lazy/barbar.lua
+
 return {
 	'romgrk/barbar.nvim',
 	dependencies = {

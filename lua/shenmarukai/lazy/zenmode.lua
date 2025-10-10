@@ -1,5 +1,7 @@
 -- Zen Mode
 
+-- ./lua/shenmarukai/lazy/zenmode.lua
+
 return {
 	"folke/zen-mode.nvim",
 	config = function()

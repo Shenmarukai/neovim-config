@@ -1,5 +1,7 @@
 -- GitHub CLI
 
+-- ./lua/shenmarukai/lazy/gh.lua
+
 return {
 	"ldelossa/gh.nvim",
 	dependencies = {

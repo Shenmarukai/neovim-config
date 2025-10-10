@@ -1,3 +1,7 @@
+-- Yazi
+
+-- ./lua/shenmarukai/lazy/yazi.lua
+
 return {
 	"mikavilpas/yazi.nvim",
 	version = "*", -- use the latest stable version

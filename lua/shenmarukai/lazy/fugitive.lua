@@ -1,5 +1,7 @@
 -- Fugitive
 
+-- ./lua/shenmarukai/lazy/fugitive.lua
+
 return {
 	"tpope/vim-fugitive",
 	config = function()

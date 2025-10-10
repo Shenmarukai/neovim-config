@@ -1,5 +1,7 @@
 -- Peek
 
+-- ./lua/shenmarukai/lazy/peek.lua
+
 return {
 	"toppair/peek.nvim",
 	event = { "VeryLazy" },

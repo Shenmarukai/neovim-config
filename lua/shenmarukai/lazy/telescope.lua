@@ -1,5 +1,7 @@
 -- Telescope
 
+-- ./lua/shenmarukai/lazy/telescope.lua
+
 return {
 	"nvim-telescope/telescope.nvim",
 

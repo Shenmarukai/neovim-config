@@ -1,5 +1,7 @@
 -- GP
 
+-- ./lua/shenmarukai/lazy/gp.lua
+
 return {
 	"robitx/gp.nvim",
 	config = function()
@@ -82,7 +84,7 @@ return {
 					command = true,
 					-- string with model name or table with model name and parameters
 					model = {
-						model = "gpt-5",
+						model = "gpt-5-codex",
 						reasoning_effort = "high",
 						verbosity = "high"
 					},

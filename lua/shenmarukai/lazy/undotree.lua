@@ -1,5 +1,7 @@
 -- Undo Tree
 
+-- ./lua/shenmarukai/lazy/undotree.lua
+
 return {
 	"mbbill/undotree",
 

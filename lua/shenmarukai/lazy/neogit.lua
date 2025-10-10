@@ -1,5 +1,7 @@
 -- Neogit
 
+-- ./lua/shenmarukai/lazy/neogit.lua
+
 return {
   "NeogitOrg/neogit",
   dependencies = {

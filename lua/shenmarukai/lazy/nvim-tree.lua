@@ -1,5 +1,7 @@
 -- Nvim Tree
 
+-- ./lua/shenmarukai/lazy/nvim-tree.lua
+
 return {
 	"nvim-tree/nvim-tree.lua",
 

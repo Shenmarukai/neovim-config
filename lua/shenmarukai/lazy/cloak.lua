@@ -1,5 +1,7 @@
 -- Cloak
 
+-- ./lua/shenmarukai/lazy/cloak.lua
+
 return {
 	"laytan/cloak.nvim",
 	config = function()

@@ -1,5 +1,7 @@
 -- Snippets
 
+-- ./lua/shenmarukai/lazy/snippets.lua
+
 return {
 	"L3MON4D3/LuaSnip",
 	-- follow latest release.

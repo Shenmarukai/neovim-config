@@ -1,3 +1,5 @@
+-- lua/shenmarukai/init.lua
+
 require( "shenmarukai.set" )
 require( "shenmarukai.remap" )
 require( "shenmarukai.lazy_init" )

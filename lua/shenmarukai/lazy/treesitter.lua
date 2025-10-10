@@ -1,5 +1,7 @@
 -- Treesitter
 
+-- ./lua/shenmarukai/lazy/treesitter.lua
+
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",

@@ -1,5 +1,7 @@
 -- Harpoon
 
+-- ./lua/shenmarukai/lazy/harpoon.lua
+
 return {
 	"ThePrimeagen/harpoon",
 	branch = "harpoon2",
