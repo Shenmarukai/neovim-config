@@ -14,7 +14,7 @@ require( "shenmarukai.lazy_init" )
 -- DO.not
 
 local augroup = vim.api.nvim_create_augroup
-local ThePrimeagenGroup = augroup( 'ThePrimeagen', {} )
+local ShenmarukaiGroup = augroup( 'Shenmarukai', {} )
 
 local autocmd = vim.api.nvim_create_autocmd
 local yank_group = augroup( 'HighlightYank', {} )
@@ -61,6 +61,7 @@ vim.filetype.add({
 autocmd( "VimEnter", {
 	callback = function()
 		require( "nvim-tree.api" ).tree.open()
+		vim.cmd.colorscheme( "catppuccin" )
 	end,
 })
 
@@ -76,29 +77,13 @@ autocmd( 'TextYankPost', {
 })
 
 autocmd( { "BufWritePre" }, {
-	group = ThePrimeagenGroup,
+	group = ShenmarukaiGroup,
 	pattern = "*",
 	command = [[%s/\s\+$//e]],
 })
 
-autocmd( 'BufEnter', {
-	group = ThePrimeagenGroup,
-	callback = function()
-		--vim.cmd.colorscheme( "tokyonight-night" )
-		--vim.cmd.colorscheme( "github_dark_default" )
-		vim.cmd.colorscheme( "catppuccin" )
-		--local twilight = require( 'twilight' )
-		--twilight.disable()
-		--twilight.enable()
-		local filetype = vim.bo.filetype
-		vim.opt_local.expandtab = false
-		vim.opt_local.tabstop = 4
-		vim.opt_local.shiftwidth = 4
-	end
-})
-
 autocmd( 'LspAttach', {
-	group = ThePrimeagenGroup,
+	group = ShenmarukaiGroup,
 	callback = function( e )
 		local filetype = vim.bo.filetype
 		vim.diagnostic.config( { virtual_text = true } )
@@ -138,8 +123,19 @@ autocmd( 'LspAttach', {
 	end
 })
 
+autocmd( 'BufEnter', {
+	group = ShenmarukaiGroup,
+	callback = function()
+		vim.cmd.colorscheme( "catppuccin" )
+		-- local filetype = vim.bo.filetype
+		vim.opt_local.expandtab = false
+		vim.opt_local.tabstop = 4
+		vim.opt_local.shiftwidth = 4
+	end
+})
+
 autocmd( { 'ModeChanged', 'BufEnter' }, {
-	group = ThePrimeagenGroup,
+	group = ShenmarukaiGroup,
 	callback = function ()
 		local mode = vim.fn.mode( 1 )
 		local filetype = vim.bo.filetype

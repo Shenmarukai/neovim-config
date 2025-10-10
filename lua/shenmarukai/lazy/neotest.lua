@@ -8,13 +8,17 @@ return {
 		"antoinemadec/FixCursorHold.nvim",
 		"nvim-treesitter/nvim-treesitter",
 		"fredrikaverpil/neotest-golang",
+		"rouge8/neotest-rust",
 		"leoluz/nvim-dap-go",
 	},
 	config = function()
 		require( "neotest" ).setup({
 			adapters = {
-				require( "neotest-golang" )({
+				require( "neotest-golang" )( {
 					dap = { justMyCode = false },
+				}),
+				require( "neotest-rust" )( {
+					args = { "--no-capture" },
 				}),
 			},
 		})
