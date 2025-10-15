@@ -84,15 +84,26 @@ return {
 			},
 		})
 
-		require( "mason" ).setup()
+		require("lspconfig").lua_ls.setup({
+			capabilities = capabilities,
+			cmd = { vim.fn.exepath("lua-language-server") ~= "" and vim.fn.exepath("lua-language-server")
+				or "/data/data/com.termux/files/usr/bin/lua-language-server" },
+		})
+		require("lspconfig").rust_analyzer.setup({
+			capabilities = capabilities,
+			cmd = { vim.fn.exepath("rust-analyzer") ~= "" and vim.fn.exepath("rust-analyzer")
+				or "/data/data/com.termux/files/usr/bin/rust-analyzer" },
+		})
+
+		require( "mason" ).setup( { PATH = "append" } )
 		require( "mason-lspconfig" ).setup({
 			ensure_installed = {
-				"lua_ls",
-				"rust_analyzer",
-				"gopls",
-				"ts_ls",
-				"biome",
-				"csharp_ls"
+				--"lua_ls",
+				--"rust_analyzer",
+				--"gopls",
+				--"ts_ls",
+				--"biome",
+				--"csharp_ls"
 			},
 			handlers = {
 				function( server_name ) -- default handler (optional)
